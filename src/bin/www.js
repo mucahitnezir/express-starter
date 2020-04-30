@@ -1,5 +1,7 @@
 #!/usr/bin/env node
 
+/* eslint-disable */
+
 /**
  * Module dependencies.
  */
@@ -65,8 +67,8 @@ function onError(error) {
   }
 
   const bind = typeof port === 'string'
-    ? 'Pipe ' + port
-    : 'Port ' + port;
+    ? `Pipe ${port}`
+    : `Port ${port}`;
 
   // handle specific listen errors with friendly messages
   switch (error.code) {
@@ -90,8 +92,8 @@ function onError(error) {
 function onListening() {
   const addr = server.address();
   const bind = typeof addr === 'string'
-    ? 'pipe ' + addr
-    : 'port ' + addr.port;
+    ? `Pipe ${addr}`
+    : `Port ${addr.port}`;
   debug(`Listening on ${bind}`);
   console.log(`Listening on ${bind}`);
 }
