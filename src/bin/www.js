@@ -9,6 +9,7 @@
 import http from 'http';
 import debugLib from 'debug';
 import app from '../app';
+import db from '../database';
 
 /**
  * Start debug library
@@ -33,9 +34,15 @@ const server = http.createServer(app);
  * Listen on provided port, on all network interfaces.
  */
 
-server.listen(port);
-server.on('error', onError);
-server.on('listening', onListening);
+db.authenticate()
+  .then(() => {
+    server.listen(port);
+    server.on('error', onError);
+    server.on('listening', onListening);
+  })
+  .catch((err) => {
+    console.error('Database connection error', err);
+  });
 
 /**
  * Normalize a port into a number, string, or false.
