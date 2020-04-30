@@ -3,8 +3,9 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
-    "start:dev": "nodemon ./bin/www"
+    "build": "babel src --out-dir dist",
+    "start": "node ./dist/bin/www.js",
+    "start:dev": "nodemon --exec babel-node ./src/bin/www.js"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -14,6 +15,10 @@
     "morgan": "~1.9.1"
   },
   "devDependencies": {
+    "@babel/cli": "^7.8.4",
+    "@babel/core": "^7.9.6",
+    "@babel/node": "^7.8.7",
+    "@babel/preset-env": "^7.9.6",
     "nodemon": "^2.0.3"
   }
 }

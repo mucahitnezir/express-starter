@@ -1,10 +1,10 @@
-const createError = require('http-errors');
-const express = require('express');
-const cookieParser = require('cookie-parser');
-const logger = require('morgan');
+import createError from 'http-errors';
+import express from 'express';
+import cookieParser from 'cookie-parser';
+import logger from 'morgan';
 
-const indexRouter = require('./routes/index');
-const usersRouter = require('./routes/users');
+import indexRouter from './routes/index';
+import usersRouter from './routes/users';
 
 const app = express();
 
@@ -26,4 +26,4 @@ app.use((err, req, res, next) => {
   res.status(err.status || 500).json(err);
 });
 
-module.exports = app;
+export default app;
