@@ -5,7 +5,14 @@
  */
 
 import http from 'http';
+import debugLib from 'debug';
 import app from '../app';
+
+/**
+ * Start debug library
+ */
+
+const debug = debugLib('notes:server');
 
 /**
  * Get port from environment and store in Express.
@@ -85,5 +92,6 @@ function onListening() {
   const bind = typeof addr === 'string'
     ? 'pipe ' + addr
     : 'port ' + addr.port;
+  debug(`Listening on ${bind}`);
   console.log(`Listening on ${bind}`);
 }
