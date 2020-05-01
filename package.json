@@ -7,7 +7,8 @@
     "start": "node ./dist/bin/www.js",
     "start:dev": "nodemon --exec babel-node ./src/bin/www.js",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "db:migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
     "cookie-parser": "~1.4.4",
@@ -24,10 +25,12 @@
     "@babel/core": "^7.9.6",
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
+    "@babel/register": "^7.9.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
-    "nodemon": "^2.0.3"
+    "nodemon": "^2.0.3",
+    "sequelize-cli": "^5.5.1"
   },
   "engines": {
     "node": "12.16.2",
