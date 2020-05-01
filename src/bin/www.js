@@ -15,7 +15,7 @@ import db from '../database';
  * Start debug library
  */
 
-const debug = debugLib('notes:server');
+const debug = debugLib('express-starter:server');
 
 /**
  * Get port from environment and store in Express.
