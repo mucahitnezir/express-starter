@@ -5,8 +5,7 @@ import express from 'express';
 import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
-import indexRouter from './routes/index';
-import usersRouter from './routes/users';
+import routerConfig from './config/router';
 
 const app = express();
 
@@ -15,8 +14,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-app.use('/', indexRouter);
-app.use('/users', usersRouter);
+routerConfig(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
