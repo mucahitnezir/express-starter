@@ -1,7 +1,19 @@
+import { compareSync, hashSync } from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
 
+import { tokenHelper } from '../../helpers';
+
 export default function (sequelize) {
-  class User extends Model {}
+  class User extends Model {
+    generateToken() {
+      const data = { id: this.id, email: this.email };
+      return tokenHelper.generateToken(data);
+    }
+
+    validatePassword(plainPassword) {
+      return compareSync(plainPassword, this.password);
+    }
+  }
 
   User.init({
     firstName: {
@@ -24,6 +36,13 @@ export default function (sequelize) {
   }, {
     modelName: 'user',
     sequelize,
+  });
+
+  User.addHook('beforeSave', (instance) => {
+    if (instance.changed('password')) {
+      // eslint-disable-next-line no-param-reassign
+      instance.password = hashSync(instance.password, 10);
+    }
   });
 
   return User;
