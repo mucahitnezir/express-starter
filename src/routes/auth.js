@@ -9,6 +9,9 @@ router.post('/login', authController.login);
 
 router.post('/register', authController.register);
 
-router.get('/me', isAuthenticated, authController.getCurrentUser);
+router.route('/me')
+  .get(isAuthenticated, authController.getCurrentUser)
+  .put(isAuthenticated, authController.updateCurrentUser)
+  .delete(isAuthenticated, authController.deleteCurrentUser);
 
 export default router;

@@ -55,14 +55,35 @@ export const register = async (req, res, next) => {
  */
 export const getCurrentUser = async (req, res, next) => {
   try {
-    const { id } = req.user;
-    const user = await db.models.user
-      .findByPk(id, {
-        attributes: {
-          exclude: ['password'],
-        },
-      });
-    res.json(user);
+    res.json(req.user);
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * PUT /auth/me
+ * Update current user
+ */
+export const updateCurrentUser = async (req, res, next) => {
+  try {
+    await req.user.update(req.body, {
+      fields: ['firstName', 'lastName', 'email', 'password'],
+    });
+    res.status(200).json({ success: true });
+  } catch (err) {
+    next(err);
+  }
+};
+
+/**
+ * DELETE /auth/me
+ * Delete current user
+ */
+export const deleteCurrentUser = async (req, res, next) => {
+  try {
+    await req.user.destroy();
+    res.status(204).send();
   } catch (err) {
     next(err);
   }
