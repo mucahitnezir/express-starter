@@ -1,1 +1,51 @@
-# express-starter
+# Express Starter
+
+This project was created to be a template when starting a new [express.js](https://github.com/expressjs/express) project.
+
+## 1. Features
+
+1. ES6 features with babel (including **es6 import/export** feature)
+2. SQL database implementation with **Sequelize v5** for **mysql dialect** (you can change mysql anytime)
+3. Compatible with 12 factor app
+4. Including authentication system with rest api endpoints
+5. Linting with eslint (airbnb config)
+
+## 2. Database Selection
+This project is compatible with sql-based databases. You can change default dialect (mysql) in anytime.
+To do this, firstly select your database from the table below.
+Modify `dialect` property in `src/config/sequelize.js` and install required npm package(s) for this database.
+
+For more info, visit [sequelize docs](https://sequelize.org/v5/manual/dialects.html)
+
+**Note:** The default and active database is mysql.
+If you want to use mysql in your project, you don't need to make any changes.
+
+| Database | Dialect | Required npm Package(s) |
+| --- | --- | --- |
+| MySQL | mysql | `npm install --save mysql2` |
+| MariaDB | mariadb | `npm install --save mariadb` |
+| PostgreSQL | postgres | `npm install --save pg pg-hstore` |
+| SQLite | sqlite | `npm install --save sqlite3` |
+| Microsoft SQL Server | mssql | `npm install --save tedious` |
+
+### 2.1. Usage of sequelize-cli
+With sequelize-cli package, you can manage model, migration and seed files.
+You can find more information with [document](https://sequelize.org/v5/manual/migrations.html). 
+
+## 3. Installation
+1. Firstly, you have to install npm packages with ``npm install`` command.
+2. Create empty MySQL database.
+4. Create **.env** file by copying *.env.sample* file in **root directory**.
+5. Modify .env file.
+6. Use `npm run db:migrate` command to create database tables.
+8. Finally, your app will run successfully with ``npm run start:dev`` command.
+
+### Authentication Endpoints
+
+| Route | HTTP Verb | Request Body | Description |
+| --- | --- | --- | --- |
+| /auth/register | `POST` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com', 'password': '1234'} | Create new user. |
+| /auth/login | `POST` | {'email': 'john.doe@example.com', 'password': '1234'} | Login endpoint. |
+| /auth/me | `GET` | Empty | Fetch current user. |
+| /auth/me | `PUT` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com'} | Update current user. |
+| /auth/me | `DELETE` | Empty | Delete current user. |
