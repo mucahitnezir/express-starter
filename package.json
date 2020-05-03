@@ -8,6 +8,7 @@
     "start:dev": "nodemon --exec babel-node ./src/bin/www.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
+    "test": "NODE_ENV=test mocha --require @babel/register --exit",
     "db:migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
@@ -29,9 +30,12 @@
     "@babel/node": "^7.8.7",
     "@babel/preset-env": "^7.9.6",
     "@babel/register": "^7.9.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "eslint": "^6.8.0",
     "eslint-config-airbnb-base": "^14.1.0",
     "eslint-plugin-import": "^2.20.2",
+    "mocha": "^7.1.2",
     "nodemon": "^2.0.3",
     "sequelize-cli": "^5.5.1"
   },
