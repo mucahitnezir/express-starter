@@ -63,5 +63,14 @@ export default function (sequelize) {
     instance.sendMail(payload);
   });
 
+  User.addHook('afterDestroy', (instance) => {
+    // Send good by message to user.
+    const payload = {
+      subject: 'Sorry to see you go',
+      html: 'Your account is destroyed successfully!',
+    };
+    instance.sendMail(payload);
+  });
+
   return User;
 }
