@@ -1,7 +1,16 @@
 {
   "name": "express-starter",
   "version": "0.0.0",
-  "private": true,
+  "description": "A boilerplate for Node.js api projects",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/mucahitnezir/express-starter.git"
+  },
+  "license": "MIT",
+  "author": {
+    "name": "Mücahit Nezir",
+    "email": "mucahitnezir@gmail.com"
+  },
   "scripts": {
     "build": "babel src --out-dir dist",
     "start": "node ./dist/bin/www.js",
