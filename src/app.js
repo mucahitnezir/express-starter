@@ -6,14 +6,20 @@ import cookieParser from 'cookie-parser';
 import logger from 'morgan';
 
 import routerConfig from './config/router';
+import { authentication as authenticationMiddleware } from './middleware';
 
 const app = express();
 
+// Required middleware list
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 
+// Custom middleware list
+app.use(authenticationMiddleware);
+
+// Load router paths
 routerConfig(app);
 
 // catch 404 and forward to error handler
