@@ -2,15 +2,19 @@
 
 This project was created to be a template when starting a new [express.js](https://github.com/expressjs/express) project.
 
-## 1. Features
+## Features
 
-1. ES6 features with babel (including **es6 import/export** feature)
-2. SQL database implementation with **Sequelize v5** for **mysql dialect** (you can change mysql anytime)
-3. Compatible with 12 factor app
-4. Including authentication system with rest api endpoints
-5. Linting with eslint (airbnb config)
+1. ES6+ features with babel (including **es6 import/export** feature).
+2. SQL database implementation with **[Sequelize v5](https://sequelize.org/v5/index.html)** for **mysql dialect** (you can change mysql anytime).
+3. Compatible with [12 factor app](https://12factor.net/).
+4. Including authentication system with rest api endpoints.
+5. Linting with eslint (airbnb config).
+6. Implemented nodemailer. If you are in development mode, you use test smtp account. In other modes, you use real smtp server.
+For more info, browse `src/helpers/mail.js` file.
+7. Docker image is ready.
+8. Test cases written with mocha and chai.
 
-## 2. Database Selection
+## Database Selection
 This project is compatible with sql-based databases. You can change default dialect (mysql) in anytime.
 To do this, firstly select your database from the table below.
 Modify `dialect` property in `src/config/sequelize.js` and install required npm package(s) for this database.
@@ -28,11 +32,11 @@ If you want to use mysql in your project, you don't need to make any changes.
 | SQLite | sqlite | `npm install --save sqlite3` |
 | Microsoft SQL Server | mssql | `npm install --save tedious` |
 
-### 2.1. Usage of sequelize-cli
+### Usage of sequelize-cli
 With sequelize-cli package, you can manage model, migration and seed files.
 You can find more information with [document](https://sequelize.org/v5/manual/migrations.html). 
 
-## 3. Installation
+## Installation
 1. Firstly, you have to install npm packages with ``npm install`` command.
 2. Create empty MySQL database.
 4. Create **.env** file by copying *.env.sample* file in **root directory**.
@@ -40,7 +44,7 @@ You can find more information with [document](https://sequelize.org/v5/manual/mi
 6. Use `npm run db:migrate` command to create database tables.
 8. Finally, your app will run successfully with ``npm run start:dev`` command.
 
-### Authentication Endpoints
+## Authentication Endpoints
 
 | Route | HTTP Verb | Request Body | Description |
 | --- | --- | --- | --- |
@@ -49,3 +53,10 @@ You can find more information with [document](https://sequelize.org/v5/manual/mi
 | /auth/me | `GET` | Empty | Fetch current user. |
 | /auth/me | `PUT` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com'} | Update current user. |
 | /auth/me | `DELETE` | Empty | Delete current user. |
+
+## Contribution
+Anyone interested in the project can contribute to this repository. To do this, first fork the repository.
+Then make the changes in your repository. Finally, send a pull request to this repository.
+
+## License
+**Express Starter** is licensed under the **MIT license**
