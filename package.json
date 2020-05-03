@@ -5,7 +5,7 @@
   "scripts": {
     "build": "babel src --out-dir dist",
     "start": "node ./dist/bin/www.js",
-    "start:dev": "nodemon --exec babel-node ./src/bin/www.js",
+    "start:dev": "nodemon --ignore dist/ --ignore test/ --exec babel-node ./src/bin/www.js",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "test": "NODE_ENV=test mocha --require @babel/register --exit",
