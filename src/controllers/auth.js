@@ -48,3 +48,22 @@ export const register = async (req, res, next) => {
     next(err);
   }
 };
+
+/**
+ * GET /auth/me
+ * Get current user
+ */
+export const getCurrentUser = async (req, res, next) => {
+  try {
+    const { id } = req.user;
+    const user = await db.models.user
+      .findByPk(id, {
+        attributes: {
+          exclude: ['password'],
+        },
+      });
+    res.json(user);
+  } catch (err) {
+    next(err);
+  }
+};
