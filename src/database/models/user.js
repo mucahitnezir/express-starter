@@ -1,10 +1,14 @@
 import { compareSync, hashSync } from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
 
-import { tokenHelper } from '../../helpers';
+import { tokenHelper, mailHelper } from '../../helpers';
 
 export default function (sequelize) {
   class User extends Model {
+    get fullName() {
+      return `${this.firstName} ${this.lastName}`;
+    }
+
     generateToken() {
       const data = { id: this.id, email: this.email };
       return tokenHelper.generateToken(data);
@@ -12,6 +16,11 @@ export default function (sequelize) {
 
     validatePassword(plainPassword) {
       return compareSync(plainPassword, this.password);
+    }
+
+    sendMail(mail) {
+      const payload = { ...mail, to: `${this.fullName} <${this.email}>` };
+      return mailHelper.sendMail(payload);
     }
   }
 
@@ -43,6 +52,15 @@ export default function (sequelize) {
       // eslint-disable-next-line no-param-reassign
       instance.password = hashSync(instance.password, 10);
     }
+  });
+
+  User.addHook('afterCreate', (instance) => {
+    // Send welcome message to user.
+    const payload = {
+      subject: 'Welcome to Express Starter',
+      html: 'Your account is created successfully!',
+    };
+    instance.sendMail(payload);
   });
 
   return User;
