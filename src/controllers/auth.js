@@ -68,7 +68,7 @@ export const getCurrentUser = async (req, res, next) => {
 export const updateCurrentUser = async (req, res, next) => {
   try {
     await req.user.update(req.body, {
-      fields: ['firstName', 'lastName', 'email', 'password'],
+      fields: ['firstName', 'lastName', 'email'],
     });
     res.status(200).json({ success: true });
   } catch (err) {
