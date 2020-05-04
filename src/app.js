@@ -1,9 +1,10 @@
 import 'dotenv/config';
 
-import createError from 'http-errors';
-import express from 'express';
-import cookieParser from 'cookie-parser';
+import cors from 'cors';
 import logger from 'morgan';
+import express from 'express';
+import createError from 'http-errors';
+import cookieParser from 'cookie-parser';
 
 import routerConfig from './config/router';
 import { authentication as authenticationMiddleware } from './middleware';
@@ -14,6 +15,7 @@ const app = express();
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
+app.use(cors({ origin: process.env.CORS_ALLOWED_ORIGIN, optionsSuccessStatus: 200 }));
 app.use(cookieParser());
 
 // Custom middleware list
