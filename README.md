@@ -13,6 +13,7 @@ This project was created to be a template when starting a new [express.js](https
 For more info, browse `src/helpers/mail.js` file.
 7. Docker image is ready.
 8. Test cases written with mocha and chai.
+9. Implemented sentry error tracking.
 
 ## Database Selection
 This project is compatible with sql-based databases. You can change default dialect (mysql) in anytime.
