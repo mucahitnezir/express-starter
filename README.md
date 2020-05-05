@@ -54,6 +54,7 @@ You can find more information with [document](https://sequelize.org/v5/manual/mi
 | /auth/me | `GET` | Empty | Fetch current user. |
 | /auth/me | `PUT` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com'} | Update current user. |
 | /auth/me | `DELETE` | Empty | Delete current user. |
+| /auth/me/password | `PUT` | {'current': 'current-password', 'password: 'new-password'} | Update password of current user. |
 
 ## Contribution
 Anyone interested in the project can contribute to this repository. To do this, first fork the repository.
