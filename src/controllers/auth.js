@@ -55,6 +55,7 @@ export const register = async (req, res, next) => {
  */
 export const getCurrentUser = async (req, res, next) => {
   try {
+    delete req.user.dataValues.password;
     res.json(req.user);
   } catch (err) {
     next(err);
@@ -86,5 +87,28 @@ export const deleteCurrentUser = async (req, res, next) => {
     res.status(204).send();
   } catch (err) {
     next(err);
+  }
+};
+
+/**
+ * PUT /auth/me/password
+ * Update password of current user
+ */
+export const updatePassword = async (req, res, next) => {
+  try {
+    const { current, password } = req.body;
+
+    // Check user password
+    if (!req.user.validatePassword(current)) {
+      return next(createError(400, 'Incorrect password!'));
+    }
+
+    // Update password
+    req.user.password = password;
+    await req.user.save();
+
+    return res.json({ success: true });
+  } catch (err) {
+    return next(err);
   }
 };

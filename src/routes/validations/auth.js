@@ -17,3 +17,8 @@ export const updateProfileRules = [
   body('lastName').optional(),
   body('email').isEmail().optional(),
 ];
+
+export const changePasswordRules = [
+  body('current').exists(),
+  body('password').isLength({ min: 6 }).exists(),
+];
