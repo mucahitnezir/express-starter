@@ -11,7 +11,7 @@ import routerConfig from './config/router';
 import sentryConfig from './config/sentry';
 import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from './middleware';
 
-const { NODE_ENV = 'development' } = process.env;
+const { NODE_ENV } = process.env;
 
 const app = express();
 

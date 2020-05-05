@@ -1,7 +1,7 @@
 import { createTransport, createTestAccount, getTestMessageUrl } from 'nodemailer';
 
 const {
-  NODE_ENV = 'development', SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, DEFAULT_MAIL_SENDER,
+  NODE_ENV, SMTP_HOST, SMTP_PORT, SMTP_USER, SMTP_PASSWORD, DEFAULT_MAIL_SENDER,
 } = process.env;
 
 async function getTransporter() {

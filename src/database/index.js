@@ -5,7 +5,7 @@ import { Sequelize } from 'sequelize';
 import * as config from '../config/sequelize';
 
 // Configuration
-const env = process.env.NODE_ENV || 'development';
+const env = process.env.NODE_ENV;
 const sequelizeConfig = config[env];
 
 // Create sequelize instance
