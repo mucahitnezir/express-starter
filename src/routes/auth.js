@@ -1,17 +1,18 @@
 import { Router } from 'express';
 
 import * as authController from '../controllers/auth';
-import { isAuthenticated } from '../middleware';
+import * as authValidations from './validations/auth';
+import { isAuthenticated, validate } from '../middleware';
 
 const router = Router();
 
-router.post('/login', authController.login);
+router.post('/login', validate(authValidations.loginRules), authController.login);
 
-router.post('/register', authController.register);
+router.post('/register', validate(authValidations.registerRules), authController.register);
 
 router.route('/me')
   .get(isAuthenticated, authController.getCurrentUser)
-  .put(isAuthenticated, authController.updateCurrentUser)
+  .put(isAuthenticated, validate(authValidations.updateProfileRules), authController.updateCurrentUser)
   .delete(isAuthenticated, authController.deleteCurrentUser);
 
 export default router;
