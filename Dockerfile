@@ -1,8 +1,9 @@
-FROM node:12.16.2-alpine
+# Builder image
+FROM node:12.16.2-alpine AS builder
 
-WORKDIR /usr/src/app
+COPY package*.json ./app/
 
-COPY package*.json ./
+WORKDIR /app
 
 RUN npm install
 
@@ -10,7 +11,16 @@ COPY . .
 
 RUN npm run build
 
-RUN npm prune --production
+# Production image
+FROM node:12.16.2-alpine
+
+COPY package*.json ./usr/src/app/
+
+WORKDIR /usr/src/app
+
+RUN npm install --only=production
+
+COPY --from=builder /app/dist/ ./dist/
 
 EXPOSE 3000
 
