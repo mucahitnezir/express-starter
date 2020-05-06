@@ -9,9 +9,9 @@ export default function (sequelize) {
       return `${this.firstName} ${this.lastName}`;
     }
 
-    generateToken() {
+    generateToken(expiresIn = '1h') {
       const data = { id: this.id, email: this.email };
-      return tokenHelper.generateToken(data);
+      return tokenHelper.generateToken(data, expiresIn);
     }
 
     validatePassword(plainPassword) {

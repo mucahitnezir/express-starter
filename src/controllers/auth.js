@@ -23,7 +23,8 @@ export const login = async (req, res, next) => {
 
     // Generate and return token
     const token = user.generateToken();
-    return res.status(200).json({ token });
+    const refreshToken = user.generateToken('2h');
+    return res.status(200).json({ token, refreshToken });
   } catch (err) {
     return next(err);
   }
@@ -41,9 +42,10 @@ export const register = async (req, res, next) => {
         fields: ['firstName', 'lastName', 'email', 'password'],
       });
 
-    // Generate and return token
+    // Generate and return tokens
     const token = user.generateToken();
-    res.status(201).json({ token });
+    const refreshToken = user.generateToken('2h');
+    res.status(201).json({ token, refreshToken });
   } catch (err) {
     next(err);
   }
