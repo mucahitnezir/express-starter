@@ -11,7 +11,7 @@ const testUser = {
   firstName: 'John',
   lastName: 'Doe',
   email: 'hello@example.com',
-  password: '1234',
+  password: '123456',
 };
 
 let token;
@@ -28,6 +28,7 @@ describe('Authentication tests', () => {
         // Check response
         res.should.have.status(201);
         res.body.should.have.property('token').a('string');
+        res.body.should.have.property('refreshToken').a('string');
         done();
       });
   });
@@ -44,6 +45,7 @@ describe('Authentication tests', () => {
         // Check response
         res.should.have.status(200);
         res.body.should.have.property('token').a('string');
+        res.body.should.have.property('refreshToken').a('string');
         // Set token
         token = res.body.token;
         done();
