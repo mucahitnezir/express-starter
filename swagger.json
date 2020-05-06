@@ -1,0 +1,362 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "description" : "Documantation of express starter api.",
+    "version" : "1.0.0",
+    "title" : "Express Starter API",
+    "contact" : {
+      "email" : "mucahitnezir@gmail.com"
+    },
+    "license" : {
+      "name" : "MIT",
+      "url" : "https://github.com/mucahitnezir/express-starter/blob/master/LICENSE"
+    }
+  },
+  "securityDefinitions" : {
+    "bearer" : {
+      "type" : "apiKey",
+      "name" : "Authorization",
+      "in" : "header",
+      "description" : "JWT Authorization header using the Bearer scheme. Example: \"Bearer {token}\""
+    }
+  },
+  "tags" : [ {
+    "name" : "authentication"
+  } ],
+  "paths" : {
+    "/auth/register" : {
+      "post" : {
+        "summary" : "Create new user",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "firstName", "lastName", "email", "password" ],
+            "properties" : {
+              "firstName" : {
+                "type" : "string"
+              },
+              "lastName" : {
+                "type" : "string"
+              },
+              "email" : {
+                "type" : "string"
+              },
+              "password" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TokenResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ],
+        "description" : "Create new user"
+      }
+    },
+    "/auth/login" : {
+      "post" : {
+        "summary" : "Login",
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "email", "password" ],
+            "properties" : {
+              "email" : {
+                "type" : "string"
+              },
+              "password" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TokenResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ],
+        "description" : "Login"
+      }
+    },
+    "/auth/me" : {
+      "get" : {
+        "summary" : "Fetch current user",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Get current user info",
+            "schema" : {
+              "$ref" : "#/definitions/User"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ],
+        "description" : "Fetch current user"
+      },
+      "put" : {
+        "summary" : "Update current user",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "model",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "properties" : {
+              "firstName" : {
+                "type" : "string"
+              },
+              "lastName" : {
+                "type" : "string"
+              },
+              "email" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SuccessResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ],
+        "description" : "Update current user"
+      },
+      "delete" : {
+        "summary" : "Delete current user",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "OK"
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ],
+        "description" : "Delete current user"
+      }
+    },
+    "/auth/me/password" : {
+      "put" : {
+        "summary" : "Update password of current user",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "current", "password" ],
+            "properties" : {
+              "current" : {
+                "type" : "string"
+              },
+              "password" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "description" : "Update password of current user",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SuccessResponse"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "authentication" ]
+      }
+    }
+  },
+  "definitions" : {
+    "User" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "firstName" : {
+          "type" : "string"
+        },
+        "lastName" : {
+          "type" : "string"
+        },
+        "email" : {
+          "type" : "string"
+        },
+        "password" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "required" : [ "message" ],
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SuccessResponse" : {
+      "type" : "object",
+      "properties" : {
+        "success" : {
+          "type" : "boolean",
+          "default" : true
+        }
+      }
+    },
+    "TokenResponse" : {
+      "type" : "object",
+      "properties" : {
+        "token" : {
+          "type" : "string"
+        },
+        "refreshToken" : {
+          "type" : "string"
+        }
+      }
+    },
+    "UnprocessableEntityResponse" : {
+      "type" : "object",
+      "required" : [ "message", "errors" ],
+      "properties" : {
+        "message" : {
+          "type" : "string"
+        },
+        "errors" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/UnprocessableEntityResponseItem"
+          }
+        }
+      }
+    },
+    "UnprocessableEntityResponseItem" : {
+      "type" : "object",
+      "properties" : {
+        "value" : {
+          "type" : "string"
+        },
+        "msg" : {
+          "type" : "string"
+        },
+        "param" : {
+          "type" : "string"
+        },
+        "location" : {
+          "type" : "string"
+        }
+      }
+    }
+  }
+}

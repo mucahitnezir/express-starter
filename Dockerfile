@@ -22,6 +22,8 @@ RUN npm install --only=production
 
 COPY --from=builder /app/dist/ ./dist/
 
+COPY swagger.json ./
+
 EXPOSE 3000
 
 ENTRYPOINT [ "npm", "run", "start" ]
