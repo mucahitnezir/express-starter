@@ -7,8 +7,7 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import * as Sentry from '@sentry/node';
 
-import routerConfig from './config/router';
-import sentryConfig from './config/sentry';
+import { corsConfig, routerConfig, sentryConfig } from './config';
 import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from './middleware';
 
 const { NODE_ENV } = process.env;
@@ -25,7 +24,7 @@ if (NODE_ENV !== 'development') {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors({ origin: process.env.CORS_ALLOWED_ORIGIN, optionsSuccessStatus: 200 }));
+app.use(cors(corsConfig));
 app.use(cookieParser());
 
 // Custom middleware list
