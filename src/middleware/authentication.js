@@ -10,10 +10,12 @@ export default async function (req, res, next) {
 
   if (authorization) {
     // Get token
-    const token = authorization.split(' ')[1];
+    const isBearerToken = authorization.startsWith('Bearer ');
 
     // Decode token - verifies secret and checks exp
-    if (token) {
+    if (isBearerToken) {
+      const token = authorization.slice(7, authorization.length);
+
       try {
         // Verify token data
         const tokenData = await tokenHelper.verifyToken(token);
