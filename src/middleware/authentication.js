@@ -3,13 +3,13 @@ import { tokenHelper } from '../helpers';
 
 export default async function (req, res, next) {
   // Get authorization header from request
-  const { authorization } = req.headers;
+  const { authorization, refreshtoken: refreshToken } = req.headers;
 
   // Firstly, set request user to null
   req.user = null;
 
   if (authorization) {
-    // Get token
+    // Make sure the token is bearer token
     const isBearerToken = authorization.startsWith('Bearer ');
 
     // Decode token - verifies secret and checks exp
@@ -17,7 +17,7 @@ export default async function (req, res, next) {
       const token = authorization.slice(7, authorization.length);
 
       try {
-        // Verify token data
+        // Verify token and get token data
         const tokenData = await tokenHelper.verifyToken(token);
 
         // Find user from database
@@ -28,6 +28,26 @@ export default async function (req, res, next) {
 
         // Set request user
         req.user = user;
+
+        // Check if the token renewal time is coming
+        const now = new Date();
+        const exp = new Date(tokenData.exp * 1000);
+        const difference = exp.getTime() - now.getTime();
+        const minutes = Math.round(difference / 60000);
+
+        if (refreshToken && minutes < 15) {
+          // Verify refresh token and get refresh token data
+          const refreshTokenData = await tokenHelper.verifyToken(refreshToken);
+          // Check the user of refresh token
+          if (refreshTokenData.id === tokenData.id) {
+            // Generate new tokens
+            const newToken = user.generateToken();
+            const newRefreshToken = user.generateToken('2h');
+            // Set response headers
+            res.setHeader('Token', newToken);
+            res.setHeader('RefreshToken', newRefreshToken);
+          }
+        }
       } catch (err) {
         return next({ status: 401, ...err });
       }
