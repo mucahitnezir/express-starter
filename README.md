@@ -14,6 +14,12 @@ For more info, browse `src/helpers/mail.js` file.
 7. Docker image is ready.
 8. Test cases written with mocha and chai.
 9. Implemented sentry error tracking.
+10. Api documentation with [swagger](https://swagger.io/).
+
+## Api Documentation
+Api documentation of this project was created with [swagger](https://swagger.io/).  
+You can access the swagger configuration file from [this link](https://app.swaggerhub.com/apis/mucahitnezir/express-starter/).  
+You can also discover the interactive documentation by going to `/docs` when you run the application.
 
 ## Database Selection
 This project is compatible with sql-based databases. You can change default dialect (mysql) in anytime.
