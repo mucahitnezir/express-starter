@@ -15,6 +15,7 @@ For more info, browse `src/helpers/mail.js` file.
 8. Test cases written with mocha and chai.
 9. Implemented sentry error tracking.
 10. Api documentation with [swagger](https://swagger.io/).
+11. Records are never deleted from the database. They are marked as deleted.
 
 ## Api Documentation
 Api documentation of this project was created with [swagger](https://swagger.io/).  
