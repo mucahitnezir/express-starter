@@ -11,6 +11,9 @@ const defaultConfig = {
   password: DB_PASSWORD,
   database: DB_NAME,
   host: DB_HOST,
+  define: {
+    paranoid: true,
+  },
 };
 
 export const development = {
