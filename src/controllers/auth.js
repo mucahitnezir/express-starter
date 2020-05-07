@@ -17,7 +17,8 @@ export const login = async (req, res, next) => {
     }
 
     // Check user password
-    if (!user.validatePassword(password)) {
+    const isValidPassword = await user.validatePassword(password);
+    if (!isValidPassword) {
       return next(createError(400, 'Incorrect password!'));
     }
 
@@ -101,7 +102,8 @@ export const updatePassword = async (req, res, next) => {
     const { current, password } = req.body;
 
     // Check user password
-    if (!req.user.validatePassword(current)) {
+    const isValidPassword = await req.user.validatePassword(current);
+    if (!isValidPassword) {
       return next(createError(400, 'Incorrect password!'));
     }
 

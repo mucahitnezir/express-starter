@@ -1,4 +1,4 @@
-import { compareSync, hashSync } from 'bcrypt';
+import { compare, hash } from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
 
 import { tokenHelper, mailHelper } from '../../helpers';
@@ -15,7 +15,7 @@ export default function (sequelize) {
     }
 
     validatePassword(plainPassword) {
-      return compareSync(plainPassword, this.password);
+      return compare(plainPassword, this.password);
     }
 
     sendMail(mail) {
@@ -47,10 +47,10 @@ export default function (sequelize) {
     sequelize,
   });
 
-  User.addHook('beforeSave', (instance) => {
+  User.addHook('beforeSave', async (instance) => {
     if (instance.changed('password')) {
       // eslint-disable-next-line no-param-reassign
-      instance.password = hashSync(instance.password, 10);
+      instance.password = await hash(instance.password, 10);
     }
   });
 
