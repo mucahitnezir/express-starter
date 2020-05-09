@@ -23,6 +23,7 @@
   "dependencies": {
     "@sentry/node": "^5.15.5",
     "bcrypt": "^4.0.1",
+    "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
     "debug": "~2.6.9",

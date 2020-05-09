@@ -3,11 +3,12 @@ import 'dotenv/config';
 import cors from 'cors';
 import logger from 'morgan';
 import express from 'express';
+import compression from 'compression';
 import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import * as Sentry from '@sentry/node';
 
-import { corsConfig, routerConfig, sentryConfig } from '@/config';
+import * as configs from '@/config';
 import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from '@/middleware';
 
 const { NODE_ENV } = process.env;
@@ -16,7 +17,7 @@ const app = express();
 
 // Initialize sentry
 if (NODE_ENV !== 'development') {
-  Sentry.init(sentryConfig);
+  Sentry.init(configs.sentryConfig);
   app.use(Sentry.Handlers.requestHandler());
 }
 
@@ -24,7 +25,8 @@ if (NODE_ENV !== 'development') {
 app.use(logger('dev'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
-app.use(cors(corsConfig));
+app.use(cors(configs.corsConfig));
+app.use(compression(configs.compressionConfig));
 app.use(cookieParser());
 
 // Custom middleware list
@@ -34,7 +36,7 @@ if (NODE_ENV !== 'development') {
 }
 
 // Load router paths
-routerConfig(app);
+configs.routerConfig(app);
 
 // catch 404 and forward to error handler
 app.use((req, res, next) => {
