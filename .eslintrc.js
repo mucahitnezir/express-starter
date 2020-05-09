@@ -10,6 +10,11 @@ module.exports = {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly',
   },
+  settings: {
+    'import/resolver': {
+      'babel-module': {},
+    },
+  },
   parserOptions: {
     ecmaVersion: 2018,
     sourceType: 'module',

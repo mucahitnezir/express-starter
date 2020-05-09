@@ -8,8 +8,8 @@
 
 import http from 'http';
 import debugLib from 'debug';
-import app from '../app';
-import db from '../database';
+import app from '@/app';
+import db from '@/database';
 
 /**
  * Start debug library

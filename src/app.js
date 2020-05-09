@@ -7,8 +7,8 @@ import createError from 'http-errors';
 import cookieParser from 'cookie-parser';
 import * as Sentry from '@sentry/node';
 
-import { corsConfig, routerConfig, sentryConfig } from './config';
-import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from './middleware';
+import { corsConfig, routerConfig, sentryConfig } from '@/config';
+import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from '@/middleware';
 
 const { NODE_ENV } = process.env;
 

@@ -1,5 +1,5 @@
-import db from '../database';
-import { tokenHelper } from '../helpers';
+import db from '@/database';
+import { tokenHelper } from '@/helpers';
 
 export default async function (req, res, next) {
   // Get authorization header from request

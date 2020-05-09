@@ -1,8 +1,8 @@
 import { Router } from 'express';
 import swaggerUi from 'swagger-ui-express';
 
+import * as homeController from '@/controllers/home';
 import swaggerDocument from '../../swagger.json';
-import * as homeController from '../controllers/home';
 
 const router = Router();
 

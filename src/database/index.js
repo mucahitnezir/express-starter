@@ -2,7 +2,7 @@ import fs from 'fs';
 import path from 'path';
 import { Sequelize } from 'sequelize';
 
-import * as config from '../config/sequelize';
+import * as config from '@/config/sequelize';
 
 // Configuration
 const env = process.env.NODE_ENV;

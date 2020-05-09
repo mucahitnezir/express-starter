@@ -1,7 +1,7 @@
 import { compare, hash } from 'bcrypt';
 import { DataTypes, Model } from 'sequelize';
 
-import { tokenHelper, mailHelper } from '../../helpers';
+import { tokenHelper, mailHelper } from '@/helpers';
 
 export default function (sequelize) {
   class User extends Model {
