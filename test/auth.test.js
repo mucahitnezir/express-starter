@@ -16,8 +16,8 @@ const testUser = {
 
 let token;
 
-describe('Authentication tests', () => {
-  it('(POST /auth/register) creates new user', (done) => {
+describe('POST /auth/register', () => {
+  it('should create new user and return tokens', (done) => {
     chai.request(server)
       .post('/auth/register')
       .send(testUser)
@@ -32,8 +32,10 @@ describe('Authentication tests', () => {
         done();
       });
   });
+});
 
-  it('(POST /auth/login) test login request', (done) => {
+describe('POST /auth/login', () => {
+  it('should return tokens with 200 status code', (done) => {
     const payload = { email: testUser.email, password: testUser.password };
     chai.request(server)
       .post('/auth/login')
@@ -51,8 +53,10 @@ describe('Authentication tests', () => {
         done();
       });
   });
+});
 
-  it('(GET /auth/me) get current user', (done) => {
+describe('GET /auth/me', () => {
+  it('should return current user with 200 status code', (done) => {
     chai.request(server)
       .get('/auth/me')
       .set('Authorization', `Bearer ${token}`)
@@ -72,8 +76,10 @@ describe('Authentication tests', () => {
         done();
       });
   });
+});
 
-  it('(PUT /auth/me) update current user', (done) => {
+describe('PUT /auth/me', () => {
+  it('should update authenticated user', (done) => {
     const payload = { firstName: 'Express', lastName: 'Starter' };
     chai.request(server)
       .put('/auth/me')
@@ -90,8 +96,10 @@ describe('Authentication tests', () => {
         done();
       });
   });
+});
 
-  it('(DELETE /auth/me) delete current user', (done) => {
+describe('DELETE /auth/me', () => {
+  it('should delete authenticated user', (done) => {
     chai.request(server)
       .delete('/auth/me')
       .set('Authorization', `Bearer ${token}`)
