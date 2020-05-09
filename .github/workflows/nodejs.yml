@@ -1,0 +1,62 @@
+name: Node.js CI
+
+on:
+  push:
+    branches:
+      - '*'
+  pull_request:
+    types:
+      - opened
+    branches:
+      - '*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    container:
+      image:  node:12.16.2-alpine
+
+    services:
+      mysql:
+        image: mysql:5.7
+        ports:
+          - 3306:3306
+        env:
+          MYSQL_RANDOM_ROOT_PASSWORD: yes
+          MYSQL_USER: starter
+          MYSQL_PASSWORD: starter
+          MYSQL_DATABASE: starter
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Install dependencies
+        run: npm ci
+      - name: Lint
+        run: npm run lint
+      - name: Migrate database
+        run: npm run db:migrate
+        env:
+          NODE_ENV: test
+          DB_NAME: starter
+          DB_USER: starter
+          DB_PASSWORD: starter
+          DB_HOST: mysql
+      - name: Test
+        run: npm run test
+        env:
+          NODE_ENV: test
+          DB_NAME: starter
+          DB_USER: starter
+          DB_PASSWORD: starter
+          DB_HOST: mysql
+          JWT_SECRET_KEY: supersecretkey
+      - name: Build
+        run: npm run build
+      - name: Archive build
+        if: success()
+        uses: actions/upload-artifact@v1
+        with:
+          name: deploy_dist
+          path: dist
