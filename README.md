@@ -1,3 +1,5 @@
+![Node.js CI](https://github.com/mucahitnezir/express-starter/workflows/Node.js%20CI/badge.svg?branch=master)
+
 # Express Starter
 
 This project was created to be a template when starting a new [express.js](https://github.com/expressjs/express) project.
