@@ -6,7 +6,7 @@ const {
 
 async function getTransporter() {
   let transporter;
-  if (NODE_ENV === 'development') {
+  if (NODE_ENV !== 'production') {
     const testAccount = await createTestAccount();
     transporter = createTransport({
       host: 'smtp.ethereal.email',
@@ -46,7 +46,7 @@ export async function sendMail(mail) {
   const mailInfo = await transporter.sendMail(payload);
 
   // If in development mode, console.log the preview url.
-  if (NODE_ENV === 'development') {
+  if (NODE_ENV !== 'production') {
     // eslint-disable-next-line no-console
     console.log(`Mail Preview URL is ${getTestMessageUrl(mailInfo)}`);
   }

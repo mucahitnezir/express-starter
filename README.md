@@ -9,7 +9,7 @@ This project was created to be a template when starting a new [express.js](https
 3. Compatible with [12 factor app](https://12factor.net/).
 4. Including authentication system with rest api endpoints.
 5. Linting with eslint (airbnb config).
-6. Implemented nodemailer. If you are in development mode, you use test smtp account. In other modes, you use real smtp server.
+6. Implemented nodemailer. If you are in development or test mode, you use test smtp account. In production mode, you use real smtp server.
 For more info, browse `src/helpers/mail.js` file.
 7. Docker image is ready.
 8. Test cases written with mocha and chai.
