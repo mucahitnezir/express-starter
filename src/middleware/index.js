@@ -1,11 +1,11 @@
-import authentication from './authentication';
+import authenticationMiddleware from './authentication';
 import isAuthenticated from './isAuthenticated';
-import sentry from './sentry';
+import sentryMiddleware from './sentry';
 import validate from './validate';
 
 export {
-  authentication,
+  authenticationMiddleware,
   isAuthenticated,
-  sentry,
+  sentryMiddleware,
   validate,
 };

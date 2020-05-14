@@ -9,7 +9,7 @@ import cookieParser from 'cookie-parser';
 import * as Sentry from '@sentry/node';
 
 import * as configs from '@/config';
-import { authentication as authenticationMiddleware, sentry as sentryMiddleware } from '@/middleware';
+import { authenticationMiddleware, sentryMiddleware } from '@/middleware';
 
 const { NODE_ENV } = process.env;
 
