@@ -22,6 +22,8 @@
   },
   "tags" : [ {
     "name" : "authentication"
+  }, {
+    "name" : "tweet"
   } ],
   "paths" : {
     "/auth/register" : {
@@ -266,6 +268,96 @@
         },
         "tags" : [ "authentication" ]
       }
+    },
+    "/tweets" : {
+      "post" : {
+        "summary" : "Create new tweet",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "parameters" : [ {
+          "name" : "body",
+          "in" : "body",
+          "required" : true,
+          "schema" : {
+            "type" : "object",
+            "required" : [ "tweet" ],
+            "properties" : {
+              "tweet" : {
+                "type" : "string"
+              }
+            }
+          }
+        } ],
+        "responses" : {
+          "201" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Tweet"
+            }
+          },
+          "400" : {
+            "description" : "Bad request",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "422" : {
+            "description" : "Unprocessable Entity",
+            "schema" : {
+              "$ref" : "#/definitions/UnprocessableEntityResponse"
+            }
+          }
+        },
+        "tags" : [ "tweet" ],
+        "description" : "Create new tweet"
+      }
+    },
+    "/tweets/:id" : {
+      "get" : {
+        "summary" : "Get tweet by id",
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Tweet"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "tweet" ],
+        "description" : "Get tweet by id"
+      },
+      "delete" : {
+        "summary" : "Delete tweet by id",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "responses" : {
+          "204" : {
+            "description" : "OK"
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "404" : {
+            "description" : "Not Found",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        },
+        "tags" : [ "tweet" ],
+        "description" : "Delete tweet by id"
+      }
     }
   },
   "definitions" : {
@@ -285,6 +377,28 @@
           "type" : "string"
         },
         "password" : {
+          "type" : "string"
+        },
+        "createdAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        },
+        "updatedAt" : {
+          "type" : "string",
+          "format" : "date-time"
+        }
+      }
+    },
+    "Tweet" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer"
+        },
+        "userId" : {
+          "type" : "integer"
+        },
+        "tweet" : {
           "type" : "string"
         },
         "createdAt" : {
