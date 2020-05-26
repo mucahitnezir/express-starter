@@ -313,9 +313,16 @@
         "description" : "Create new tweet"
       }
     },
-    "/tweets/:id" : {
+    "/tweets/{id}" : {
       "get" : {
         "summary" : "Get tweet by id",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "integer",
+          "required" : true,
+          "description" : "Tweet id"
+        } ],
         "responses" : {
           "200" : {
             "description" : "OK",
@@ -335,6 +342,13 @@
       },
       "delete" : {
         "summary" : "Delete tweet by id",
+        "parameters" : [ {
+          "in" : "path",
+          "name" : "id",
+          "type" : "integer",
+          "required" : true,
+          "description" : "Tweet id"
+        } ],
         "security" : [ {
           "bearer" : [ ]
         } ],
