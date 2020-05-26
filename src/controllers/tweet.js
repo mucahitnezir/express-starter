@@ -31,7 +31,14 @@ export const getTweetById = async (req, res, next) => {
   try {
     const { id: tweetId } = req.params;
 
-    const tweet = await db.models.tweet.findOne({ where: { id: tweetId } });
+    const tweet = await db.models.tweet
+      .findOne({
+        where: { id: tweetId },
+        include: {
+          model: db.models.user,
+          attributes: ['id', 'firstName', 'lastName'],
+        },
+      });
     if (!tweet) {
       return next(createError(404, 'There is no tweet with this id!'));
     }
