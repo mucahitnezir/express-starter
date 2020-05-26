@@ -22,6 +22,10 @@ export default function (sequelize) {
       const payload = { ...mail, to: `${this.fullName} <${this.email}>` };
       return mailHelper.sendMail(payload);
     }
+
+    static associate(models) {
+      User.hasMany(models.tweet, { foreignKey: 'userId' });
+    }
   }
 
   User.init({
