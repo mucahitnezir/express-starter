@@ -24,6 +24,36 @@ export const createTweet = async (req, res, next) => {
 };
 
 /**
+ * GET /tweets
+ * List tweets with pagination
+ */
+export const getTweets = async (req, res, next) => {
+  try {
+    const { page = 1, perPage = 10 } = req.query;
+    const offset = page * perPage - perPage;
+
+    const tweets = await db.models.tweet
+      .findAndCountAll({
+        offset,
+        limit: perPage,
+        include: {
+          model: db.models.user,
+          attributes: ['id', 'firstName', 'lastName'],
+        },
+        order: [['createdAt', 'DESC']],
+      });
+
+    const totalPage = Math.ceil(tweets.count / perPage);
+    const response = {
+      ...tweets, page, totalPage, perPage,
+    };
+    return res.json(response);
+  } catch (err) {
+    return next(err);
+  }
+};
+
+/**
  * GET /tweets/:id
  * Get tweet by id
  */

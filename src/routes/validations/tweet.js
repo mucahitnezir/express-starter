@@ -1,6 +1,10 @@
-import { body } from 'express-validator';
+import { body, query } from 'express-validator';
 
-// eslint-disable-next-line import/prefer-default-export
+export const listTweetsRules = [
+  query('page').optional().isInt().toInt(),
+  query('perPage').optional().isInt().toInt(),
+];
+
 export const createTweetRules = [
   body('tweet').isLength({ max: 140 }).exists(),
 ];
