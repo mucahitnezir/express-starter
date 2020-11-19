@@ -270,6 +270,34 @@
       }
     },
     "/tweets" : {
+      "get" : {
+        "summary" : "List all tweets with pagination",
+        "security" : [ {
+          "bearer" : [ ]
+        } ],
+        "parameters" : [ {
+          "in" : "query",
+          "name" : "page",
+          "type" : "integer",
+          "required" : false,
+          "description" : "Page"
+        }, {
+          "in" : "query",
+          "name" : "perPage",
+          "type" : "integer",
+          "required" : false,
+          "description" : "Per page"
+        } ],
+        "tags" : [ "tweet" ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TweetList"
+            }
+          }
+        }
+      },
       "post" : {
         "summary" : "Create new tweet",
         "security" : [ {
@@ -422,6 +450,29 @@
         "updatedAt" : {
           "type" : "string",
           "format" : "date-time"
+        }
+      }
+    },
+    "TweetList" : {
+      "type" : "object",
+      "properties" : {
+        "page" : {
+          "type" : "integer"
+        },
+        "perPage" : {
+          "type" : "integer"
+        },
+        "totalPage" : {
+          "type" : "integer"
+        },
+        "count" : {
+          "type" : "integer"
+        },
+        "rows" : {
+          "type" : "array",
+          "items" : {
+            "$ref" : "#/definitions/Tweet"
+          }
         }
       }
     },
