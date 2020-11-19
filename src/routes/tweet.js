@@ -7,7 +7,7 @@ import { isAuthenticated, validate } from '@/middleware';
 const router = Router();
 
 router.route('/')
-  .get(validate(tweetValidations.listTweetsRules), tweetController.getTweets)
+  .get(isAuthenticated, validate(tweetValidations.listTweetsRules), tweetController.getTweets)
   .post(isAuthenticated, validate(tweetValidations.createTweetRules), tweetController.createTweet);
 
 router.route('/:id')
