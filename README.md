@@ -4,6 +4,8 @@
 
 This project was created to be a template when starting a new [express.js](https://github.com/expressjs/express) project.
 
+[![Run on Google Cloud](https://deploy.cloud.run/button.svg)](https://deploy.cloud.run?git_repo=https://github.com/mucahitnezir/express-starter.git)
+
 ## Features
 
 1. ES6+ features with babel (including **es6 import/export** feature).
