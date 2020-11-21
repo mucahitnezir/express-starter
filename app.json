@@ -20,6 +20,10 @@
     "DB_HOST": {
       "description": "MySQL database host"
     },
+    "DB_PORT": {
+      "description": "MySQL database port",
+      "value": "3306"
+    },
     "DB_USER": {
       "description": "MySQL database user"
     },

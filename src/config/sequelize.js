@@ -1,7 +1,7 @@
 import 'dotenv/config';
 
 const {
-  DB_HOST, DB_NAME, DB_USER, DB_PASSWORD,
+  DB_HOST, DB_PORT = 3306, DB_NAME, DB_USER, DB_PASSWORD,
 } = process.env;
 
 const defaultConfig = {
@@ -11,6 +11,7 @@ const defaultConfig = {
   password: DB_PASSWORD,
   database: DB_NAME,
   host: DB_HOST,
+  port: Number(DB_PORT),
   define: {
     paranoid: true,
   },
