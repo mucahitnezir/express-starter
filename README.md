@@ -15,11 +15,13 @@ This project was created to be a template when starting a new [express.js](https
 5. Linting with eslint (airbnb config).
 6. Implemented nodemailer. If you are in development or test mode, you use test smtp account. In production mode, you use real smtp server.
 For more info, browse `src/helpers/mail.js` file.
-7. Docker image is ready.
+7. Production ready Dockerfile.
 8. Test cases written with mocha and chai.
 9. Implemented sentry error tracking.
 10. Api documentation with [swagger](https://swagger.io/).
 11. Records are never deleted from the database. They are marked as deleted.
+12. Cache management with [redis](https://redis.io/).
+13. One click deploy to [Google Cloud Run](https://cloud.google.com/run).
 
 ## Api Documentation
 Api documentation of this project was created with [swagger](https://swagger.io/).  
