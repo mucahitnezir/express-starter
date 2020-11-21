@@ -17,7 +17,7 @@ This project was created to be a template when starting a new [express.js](https
 For more info, browse `src/helpers/mail.js` file.
 7. Production ready Dockerfile.
 8. Test cases written with mocha and chai.
-9. Implemented sentry error tracking.
+9. Implemented [sentry](https://sentry.io) error tracking.
 10. Api documentation with [swagger](https://swagger.io/).
 11. Records are never deleted from the database. They are marked as deleted.
 12. Cache management with [redis](https://redis.io/).
