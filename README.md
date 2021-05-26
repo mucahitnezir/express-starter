@@ -9,7 +9,7 @@ This project was created to be a template when starting a new [express.js](https
 ## Features
 
 1. ES6+ features with babel (including **es6 import/export** feature).
-2. SQL database implementation with **[Sequelize v5](https://sequelize.org/v5/index.html)** for **mysql dialect** (you can change mysql anytime).
+2. SQL database implementation with **[Sequelize v5](https://sequelize.org/v5/index.html)** for **postgres dialect** (you can change postgresql anytime).
 3. Compatible with [12 factor app](https://12factor.net/).
 4. Including authentication system with rest api endpoints.
 5. Linting with eslint (airbnb config).
@@ -29,14 +29,14 @@ You can access the swagger configuration file from [this link](https://app.swagg
 You can also discover the interactive documentation by going to `/docs` when you run the application.
 
 ## Database Selection
-This project is compatible with sql-based databases. You can change default dialect (mysql) in anytime.
+This project is compatible with sql-based databases. You can change default dialect (postgres) in anytime.
 To do this, firstly select your database from the table below.
 Modify `dialect` property in `src/config/sequelize.js` and install required npm package(s) for this database.
 
 For more info, visit [sequelize docs](https://sequelize.org/v5/manual/dialects.html)
 
-**Note:** The default and active database is mysql.
-If you want to use mysql in your project, you don't need to make any changes.
+**Note:** The default and active database is postgresql.
+If you want to use postgresql in your project, you don't need to make any changes.
 
 | Database | Dialect | Required npm Package(s) |
 | --- | --- | --- |
@@ -52,7 +52,7 @@ You can find more information with [document](https://sequelize.org/v5/manual/mi
 
 ## Installation
 1. Firstly, you have to install npm packages with ``npm install`` command.
-2. Create empty MySQL database.
+2. Create empty PostgreSQL database.
 4. Create **.env** file by copying *.env.sample* file in **root directory**.
 5. Modify .env file.
 6. Use `npm run db:migrate` command to create database tables.

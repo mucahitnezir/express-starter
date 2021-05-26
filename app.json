@@ -18,20 +18,20 @@
       "generator": "secret"
     },
     "DB_HOST": {
-      "description": "MySQL database host"
+      "description": "PostgreSQL database host"
     },
     "DB_PORT": {
-      "description": "MySQL database port",
-      "value": "3306"
+      "description": "PostgreSQL database port",
+      "value": "5432"
     },
     "DB_USER": {
-      "description": "MySQL database user"
+      "description": "PostgreSQL database user"
     },
     "DB_PASSWORD": {
-      "description": "MySQL database user password"
+      "description": "PostgreSQL database user password"
     },
     "DB_NAME": {
-      "description": "MySQL database name"
+      "description": "PostgreSQL database name"
     },
     "SMTP_HOST": {
       "description": "Only required if NODE_ENV is equal to production",

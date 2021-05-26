@@ -18,15 +18,13 @@ jobs:
       image:  node:14-alpine
 
     services:
-      mysql:
-        image: mysql:5.7
+      postgres:
+        image: postgres:12-alpine
         ports:
-          - 3306:3306
+          - 5432:5432
         env:
-          MYSQL_RANDOM_ROOT_PASSWORD: yes
-          MYSQL_USER: starter
-          MYSQL_PASSWORD: starter
-          MYSQL_DATABASE: starter
+          POSTGRES_DB: starter
+          POSTGRES_PASSWORD: starter
 
     steps:
       - name: Checkout
@@ -40,17 +38,17 @@ jobs:
         env:
           NODE_ENV: test
           DB_NAME: starter
-          DB_USER: starter
+          DB_USER: postgres
           DB_PASSWORD: starter
-          DB_HOST: mysql
+          DB_HOST: postgres
       - name: Test
         run: npm run test
         env:
           NODE_ENV: test
           DB_NAME: starter
-          DB_USER: starter
+          DB_USER: postgres
           DB_PASSWORD: starter
-          DB_HOST: mysql
+          DB_HOST: postgres
           JWT_SECRET_KEY: supersecretkey
       - name: Build
         run: npm run build

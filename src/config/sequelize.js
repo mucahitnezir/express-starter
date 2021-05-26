@@ -1,11 +1,11 @@
 import 'dotenv/config';
 
 const {
-  DB_HOST, DB_PORT = 3306, DB_NAME, DB_USER, DB_PASSWORD,
+  DB_HOST, DB_PORT = 5432, DB_NAME, DB_USER, DB_PASSWORD,
 } = process.env;
 
 const defaultConfig = {
-  dialect: 'mysql',
+  dialect: 'postgres',
   timezone: '+03:00',
   username: DB_USER,
   password: DB_PASSWORD,
