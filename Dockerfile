@@ -1,5 +1,5 @@
 # Builder image
-FROM node:12.16.2-alpine AS builder
+FROM node:14-alpine AS builder
 
 COPY package*.json ./app/
 
@@ -12,7 +12,7 @@ COPY . .
 RUN npm run build
 
 # Production image
-FROM node:12.16.2-alpine
+FROM node:14-alpine
 
 COPY package*.json ./usr/src/app/
 
