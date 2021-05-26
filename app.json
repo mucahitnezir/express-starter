@@ -33,6 +33,10 @@
     "DB_NAME": {
       "description": "PostgreSQL database name"
     },
+    "REDIS_URI": {
+      "description": "PostgreSQL database name",
+      "value": "redis://username:password@host:6379"
+    },
     "SMTP_HOST": {
       "description": "Only required if NODE_ENV is equal to production",
       "required": false
