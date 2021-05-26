@@ -30,11 +30,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Install dependencies
-        run: npm ci
+        run: yarn install --frozen-lockfile
       - name: Lint
-        run: npm run lint
+        run: yarn run lint
       - name: Migrate database
-        run: npm run db:migrate
+        run: yarn run db:migrate
         env:
           NODE_ENV: test
           DB_NAME: starter
@@ -42,7 +42,7 @@ jobs:
           DB_PASSWORD: starter
           DB_HOST: postgres
       - name: Test
-        run: npm run test
+        run: yarn run test
         env:
           NODE_ENV: test
           DB_NAME: starter
@@ -51,7 +51,7 @@ jobs:
           DB_HOST: postgres
           JWT_SECRET_KEY: supersecretkey
       - name: Build
-        run: npm run build
+        run: yarn run build
       - name: Archive build
         if: success()
         uses: actions/upload-artifact@v1
