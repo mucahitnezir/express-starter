@@ -40,23 +40,23 @@ If you want to use postgresql in your project, you don't need to make any change
 
 | Database | Dialect | Required npm Package(s) |
 | --- | --- | --- |
-| MySQL | mysql | `npm install --save mysql2` |
-| MariaDB | mariadb | `npm install --save mariadb` |
-| PostgreSQL | postgres | `npm install --save pg pg-hstore` |
-| SQLite | sqlite | `npm install --save sqlite3` |
-| Microsoft SQL Server | mssql | `npm install --save tedious` |
+| MySQL | mysql | `yarn add mysql2` |
+| MariaDB | mariadb | `yarn add mariadb` |
+| PostgreSQL | postgres | `yarn add pg pg-hstore` |
+| SQLite | sqlite | `yarn add sqlite3` |
+| Microsoft SQL Server | mssql | `yarn add tedious` |
 
 ### Usage of sequelize-cli
 With sequelize-cli package, you can manage model, migration and seed files.
 You can find more information with [document](https://sequelize.org/v5/manual/migrations.html). 
 
 ## Installation
-1. Firstly, you have to install npm packages with ``npm install`` command.
+1. Firstly, you have to install npm packages with ``yarn install`` command.
 2. Create empty PostgreSQL database.
 4. Create **.env** file by copying *.env.sample* file in **root directory**.
 5. Modify .env file.
-6. Use `npm run db:migrate` command to create database tables.
-8. Finally, your app will run successfully with ``npm run start:dev`` command.
+6. Use `yarn run db:migrate` command to create database tables.
+8. Finally, your app will run successfully with ``yarn run start:dev`` command.
 
 ## Authentication Endpoints
 
