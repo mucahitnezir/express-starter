@@ -62,8 +62,8 @@ You can find more information with [document](https://sequelize.org/v5/manual/mi
 
 | Route | HTTP Verb | Request Body | Description |
 | --- | --- | --- | --- |
-| /auth/register | `POST` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com', 'password': '1234'} | Create new user. |
-| /auth/login | `POST` | {'email': 'john.doe@example.com', 'password': '1234'} | Login endpoint. |
+| /auth/register | `POST` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com', 'password': '123456'} | Create new user. |
+| /auth/login | `POST` | {'email': 'john.doe@example.com', 'password': '123456'} | Login endpoint. |
 | /auth/me | `GET` | Empty | Fetch current user. |
 | /auth/me | `PUT` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com'} | Update current user. |
 | /auth/me | `DELETE` | Empty | Delete current user. |
