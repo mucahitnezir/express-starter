@@ -21,7 +21,8 @@
     "db:migrate": "npx sequelize-cli db:migrate"
   },
   "dependencies": {
-    "@sentry/node": "^5.15.5",
+    "@sentry/node": "^6.7.2",
+    "@sentry/tracing": "^6.7.2",
     "bcrypt": "^5.0.0",
     "compression": "^1.7.4",
     "cookie-parser": "~1.4.4",
