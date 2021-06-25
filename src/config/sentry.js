@@ -9,6 +9,7 @@ export default (app) => ({
   integrations: [
     new Sentry.Integrations.Http({ tracing: true }),
     new Tracing.Integrations.Express({ app }),
+    new Tracing.Integrations.Postgres(),
   ],
   tracesSampleRate: 1.0,
 });
