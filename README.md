@@ -9,7 +9,7 @@ This project was created to be a template when starting a new [express.js](https
 ## Features
 
 1. ES6+ features with babel (including **es6 import/export** feature).
-2. SQL database implementation with **[Sequelize v5](https://sequelize.org/v5/index.html)** for **postgres dialect** (you can change postgresql anytime).
+2. SQL database implementation with **[Sequelize v6](https://sequelize.org/docs/v6/)** for **postgres dialect** (you can change postgresql anytime).
 3. Compatible with [12 factor app](https://12factor.net/).
 4. Including authentication system with rest api endpoints.
 5. Linting with eslint (airbnb config).
@@ -33,7 +33,7 @@ This project is compatible with sql-based databases. You can change default dial
 To do this, firstly select your database from the table below.
 Modify `dialect` property in `src/config/sequelize.js` and install required npm package(s) for this database.
 
-For more info, visit [sequelize docs](https://sequelize.org/v5/manual/dialects.html)
+For more info, visit [sequelize docs](https://sequelize.org/docs/v6/other-topics/dialect-specific-things/)
 
 **Note:** The default and active database is postgresql.
 If you want to use postgresql in your project, you don't need to make any changes.
@@ -48,7 +48,7 @@ If you want to use postgresql in your project, you don't need to make any change
 
 ### Usage of sequelize-cli
 With sequelize-cli package, you can manage model, migration and seed files.
-You can find more information with [document](https://sequelize.org/v5/manual/migrations.html). 
+You can find more information with [document](https://sequelize.org/docs/v6/other-topics/migrations/). 
 
 ## Installation
 1. Firstly, you have to install npm packages with ``yarn install`` command.

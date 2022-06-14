@@ -35,10 +35,10 @@
     "jsonwebtoken": "^8.5.1",
     "morgan": "~1.9.1",
     "nodemailer": "^6.4.16",
-    "pg": "^8.6.0",
-    "pg-hstore": "^2.3.3",
+    "pg": "^8.7.3",
+    "pg-hstore": "^2.3.4",
     "redis": "^3.1.1",
-    "sequelize": "^5.21.7",
+    "sequelize": "^6.20.1",
     "swagger-ui-express": "^4.1.4"
   },
   "devDependencies": {
@@ -56,10 +56,10 @@
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.1.2",
     "nodemon": "^2.0.3",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^6.4.1"
   },
   "engines": {
-    "node": "14",
-    "npm": "6"
+    "node": "16",
+    "npm": "8"
   }
 }
