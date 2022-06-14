@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
 
     container:
-      image:  node:14-alpine
+      image:  node:16-alpine
 
     services:
       postgres:
