@@ -1,8 +1,10 @@
-import fs from 'fs';
-import path from 'path';
 import { Sequelize } from 'sequelize';
 
 import * as config from '@/config/sequelize';
+
+// import models
+import userModel from './models/user';
+import tweetModel from './models/tweet';
 
 // Configuration
 const env = process.env.NODE_ENV;
@@ -12,22 +14,21 @@ const sequelizeConfig = config[env];
 const sequelize = new Sequelize(sequelizeConfig);
 
 // Import all model files
-const models = {};
-const modelsPath = `${__dirname}/models`;
+const modelDefiners = [
+  userModel,
+  tweetModel,
+];
 
-fs
-  .readdirSync(modelsPath)
-  .filter((file) => (file.indexOf('.') !== 0) && (file.slice(-3) === '.js'))
-  .forEach((file) => {
-    const model = sequelize.import(path.join(modelsPath, file));
-    models[model.name] = model;
-  });
+// eslint-disable-next-line no-restricted-syntax
+for (const modelDefiner of modelDefiners) {
+  modelDefiner(sequelize);
+}
 
 // Associations
-Object.keys(models)
+Object.keys(sequelize.models)
   .forEach((modelName) => {
-    if (models[modelName].associate) {
-      models[modelName].associate(models);
+    if (sequelize.models[modelName].associate) {
+      sequelize.models[modelName].associate(sequelize.models);
     }
   });
 
