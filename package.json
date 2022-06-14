@@ -56,7 +56,7 @@
     "eslint-plugin-import": "^2.20.2",
     "mocha": "^7.1.2",
     "nodemon": "^2.0.3",
-    "sequelize-cli": "^5.5.1"
+    "sequelize-cli": "^6.4.1"
   },
   "engines": {
     "node": "16",
