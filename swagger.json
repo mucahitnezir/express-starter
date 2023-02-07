@@ -21,7 +21,7 @@
     }
   },
   "tags" : [ {
-    "name" : "authentication"
+    "name" : "auth"
   }, {
     "name" : "tweet"
   } ],
@@ -72,7 +72,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ],
+        "tags" : [ "auth" ],
         "description" : "Create new user"
       }
     },
@@ -116,7 +116,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ],
+        "tags" : [ "auth" ],
         "description" : "Login"
       }
     },
@@ -140,7 +140,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ],
+        "tags" : [ "auth" ],
         "description" : "Fetch current user"
       },
       "put" : {
@@ -193,7 +193,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ],
+        "tags" : [ "auth" ],
         "description" : "Update current user"
       },
       "delete" : {
@@ -212,7 +212,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ],
+        "tags" : [ "auth" ],
         "description" : "Delete current user"
       }
     },
@@ -266,7 +266,7 @@
             }
           }
         },
-        "tags" : [ "authentication" ]
+        "tags" : [ "auth" ]
       }
     },
     "/tweets" : {
