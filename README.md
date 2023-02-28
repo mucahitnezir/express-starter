@@ -62,12 +62,12 @@ You can find more information with [document](https://sequelize.org/docs/v6/othe
 
 | Route | HTTP Verb | Request Body | Description |
 | --- | --- | --- | --- |
-| /auth/register | `POST` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com', 'password': '123456'} | Create new user. |
-| /auth/login | `POST` | {'email': 'john.doe@example.com', 'password': '123456'} | Login endpoint. |
+| /auth/register | `POST` | {"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com", "password": "123456"} | Create new user. |
+| /auth/login | `POST` | {"email": "john.doe@example.com", "password": "123456"} | Login endpoint. |
 | /auth/me | `GET` | Empty | Fetch current user. |
-| /auth/me | `PUT` | {'firstName': 'John', 'lastName': 'Doe', 'email': 'john.doe@example.com'} | Update current user. |
+| /auth/me | `PUT` | {"firstName": "John", "lastName": "Doe", "email": "john.doe@example.com"} | Update current user. |
 | /auth/me | `DELETE` | Empty | Delete current user. |
-| /auth/me/password | `PUT` | {'current': 'current-password', 'password: 'new-password'} | Update password of current user. |
+| /auth/me/password | `PUT` | {"current": "current-password", "password": "new-password"} | Update password of current user. |
 
 ## Contribution
 Anyone interested in the project can contribute to this repository. To do this, first fork the repository.
