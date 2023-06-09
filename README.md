@@ -74,4 +74,4 @@ Anyone interested in the project can contribute to this repository. To do this, 
 Then make the changes in your repository. Finally, send a pull request to this repository.
 
 ## License
-**Express Starter** is licensed under the **MIT license**
+**Express Starter** is licensed under the **MIT license**.
